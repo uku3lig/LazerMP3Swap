@@ -8,3 +8,5 @@ riderModule.iml
 *.iml
 *.iws
 *.ipr
+
+FodyWeavers.xsd
