@@ -1,0 +1,42 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:LazerMP3Swap.ViewModels"
+        mc:Ignorable="d"
+        x:Class="LazerMP3Swap.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="LazerMP3Swap"
+        Width="600" Height="500">
+
+    <StackPanel Margin="16" Spacing="16">
+        <TextBlock FontSize="24" FontWeight="SemiBold">Lazer MP3 Swapper</TextBlock>
+
+        <StackPanel Spacing="4">
+            <TextBlock>osu!lazer directory:</TextBlock>
+            <TextBox Watermark="osu!lazer directory" Text="{Binding OsuDirectory}"></TextBox>
+        </StackPanel>
+
+        <StackPanel Spacing="4">
+            <TextBlock>Beatmap ID:</TextBlock>
+            <TextBox Watermark="Beatmap ID" Text="{Binding IdTextInput}" />
+        </StackPanel>
+
+        <StackPanel Spacing="4">
+            <TextBlock>Replacement audio file path:</TextBlock>
+            <TextBox Watermark="Audio file path" Text="{Binding ReplacementPath}" />
+        </StackPanel>
+
+        <Separator></Separator>
+
+        <TextBlock IsVisible="{Binding !IsOsuDirectoryValid^}" Foreground="Red" FontWeight="Bold">Invalid osu!lazer directory</TextBlock>
+
+        <TextBlock IsVisible="{Binding IsOsuDirectoryValid^}" Text="{Binding BeatmapText^}" />
+
+        <TextBlock IsVisible="{Binding !IsValidReplacement^}">Invalid audio replacement path</TextBlock>
+
+        <Button IsEnabled="{Binding IsEverythingValid^}" Command="{Binding ReplaceCommand}">Replace</Button>
+
+        <TextBlock Text="{Binding OldFilePathText}"></TextBlock>
+    </StackPanel>
+</Window>

@@ -9,6 +9,8 @@ public class Beatmap : RealmObject
     [PrimaryKey] public Guid ID { get; set; } = new();
 
     public int OnlineID { get; set; } = 0;
+    
+    public string DifficultyName { get; set; } = string.Empty;
 
     public BeatmapMetadata Metadata { get; set; } = null!;
 
